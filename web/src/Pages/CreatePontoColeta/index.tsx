@@ -149,8 +149,6 @@ const CreatePontoColeta = () => {
     alert('Ponto de Coleta criado!');
 
     history.push('/');
-    // TODO:
-    //  Criar página de sucesso
   }
 
   return (
@@ -162,6 +160,7 @@ const CreatePontoColeta = () => {
           <FiArrowLeft />
           Voltar para Home
         </Link>
+        
       </header>
 
       <form onSubmit={handleSubmit}>
