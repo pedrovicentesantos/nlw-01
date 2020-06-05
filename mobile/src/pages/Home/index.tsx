@@ -4,9 +4,6 @@ import { RectButton } from 'react-native-gesture-handler';
 import { Feather as Icon} from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import logo from '../../assets/logo.png';
-import background from '../../assets/home-background.png'
-
 const Home = () => {
   // TODO:
   // Fazer a seleção da cidade e estado igual o select do web
@@ -26,17 +23,17 @@ const Home = () => {
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground 
         style={styles.container}
-        source={background}
+        source={require('../../assets/home-background.png')}
         imageStyle={{width:274, height:368}}
       >
         <View style={styles.main}>
-          <Image source={logo} />
+          <Image source={require('../../assets/logo.png')} />
           <View>
             <Text style={styles.title}>Seu marketplace de coleta de resíduos.</Text>
             <Text style={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
           </View>
         </View>
-        {/* <Image source={require('../../assets/logo.png')} /> */}
+        {/* <Image source={} /> */}
         
         <View style={styles.footer}>
           <TextInput
