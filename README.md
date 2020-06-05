@@ -1,7 +1,7 @@
 # Projeto
 
 Criação de uma aplicação chamada Ecoleta. A aplicação tem como objetivo permitir que estabelecimentos cadastrem os tipos de resíduos que fazem coleta e que usuários possam pesquisar o tipo de coleta que procuram em diferentes locais. 
-Feita baseada no conteúdo da Semana OmniStack 11.
+Feita baseada no conteúdo da Next Level Week #01.
 
 ## Tecnologias
 
