@@ -77,7 +77,18 @@ class PontosColetaController {
   async index(request: Request, response: Response) {
     const { city, uf, items } = request.query;
 
-    // if !city && !uf && !items return all pontosColeta
+    if (!city || !uf || !items) {
+      const pontosColeta = await knex('pontosColeta').select('*');
+      
+      const serializedPontosColeta = pontosColeta.map(pontoColeta => {
+        return {
+          ...pontoColeta,
+          image_url: `http://192.168.0.13:3333/uploads/${pontoColeta.image}`
+        }
+      });
+
+      return response.json(serializedPontosColeta)
+    }
 
     const parsedItems = String(items)
       .split(',')
