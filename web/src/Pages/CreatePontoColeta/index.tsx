@@ -54,7 +54,6 @@ const CreatePontoColeta = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       setInitialPosition([position.coords.latitude, position.coords.longitude]);
     });
-    
   }, []);
 
   useEffect(() => {
@@ -269,8 +268,8 @@ const CreatePontoColeta = () => {
 
         <fieldset>
           <legend>
-            <h2>Ítens de coleta</h2> 
-            <span>Selecione um ou mais ítens abaixo</span>
+            <h2>Itens de coleta</h2> 
+            <span>Selecione um ou mais itens abaixo</span>
           </legend>
 
           <ul className="items-grid">
