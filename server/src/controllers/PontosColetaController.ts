@@ -54,24 +54,31 @@ class PontosColetaController {
   }
 
   async show(request: Request, response: Response) {
-    const { id } = request.params;
-    const pontoColeta = await knex('pontosColeta').where('id', id).first();
-
-    if (!pontoColeta) {
-      return response.status(400).json({ message: "Ponto de Coleta not found."})
+    try {
+      
+      const { id } = request.params;
+      console.log(request.params)
+      const pontoColeta = await knex('pontosColeta').where('id', id).first();
+  
+      if (!pontoColeta) {
+        return response.status(400).json({ message: "Ponto de Coleta not found."})
+      }
+  
+      const items = await knex('items')
+        .join('pontoColeta_items', 'pontoColeta_items.item_id', '=', 'items.id')
+        .where('pontoColeta_items.pontoColeta_id', id)
+        .select('items.title');
+  
+      const serializedPontoColeta =  {
+        ...pontoColeta,
+        image_url: `http://192.168.0.13:3333/uploads/${pontoColeta.image}`
+      }
+      
+      return response.json({pontoColeta: serializedPontoColeta, items})
+    } catch (error) {
+      console.log(error);
+      return response.status(500).json({error: 'error.message'})
     }
-
-    const items = await knex('items')
-      .join('pontoColeta_items', 'pontoColeta_items.item_id', '=', 'items.id')
-      .where('pontoColeta_items.pontoColeta_id', id)
-      .select('items.title');
-
-    const serializedPontoColeta =  {
-      ...pontoColeta,
-      image_url: `http://192.168.0.13:3333/uploads/${pontoColeta.image}`
-    }
-    
-    return response.json({pontoColeta: serializedPontoColeta, items})
   }
 
   async index(request: Request, response: Response) {

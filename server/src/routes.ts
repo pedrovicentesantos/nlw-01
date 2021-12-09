@@ -3,7 +3,7 @@ import express from 'express';
 import multer from 'multer';
 import multerConfig from './config/multer';
 
-import { celebrate, Joi } from 'celebrate';
+import { celebrate, Joi, Segments } from 'celebrate';
 
 import PontosColetaController from './controllers/PontosColetaController';
 import ItemsController from './controllers/ItemsController';
@@ -18,7 +18,15 @@ const upload = multer(multerConfig);
 routes.get('/items', itemsController.index);
 
 routes.get('/pontosColeta', pontosColetaController.index);
-routes.get('/pontosColeta/:id', pontosColetaController.show);
+routes.get(
+  '/pontosColeta/:id',
+  celebrate({
+    params: Joi.object().keys({
+      id: Joi.number().required(),
+    })
+  }),
+  pontosColetaController.show
+);
 
 routes.post(
   '/pontosColeta', 
@@ -38,6 +46,7 @@ routes.post(
   },{
     abortEarly: false,
   }),
-  pontosColetaController.create);
+  pontosColetaController.create
+);
 
 export default routes;
