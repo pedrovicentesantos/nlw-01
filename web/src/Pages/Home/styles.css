@@ -1,7 +1,5 @@
 #page-home {
   height: 100vh;
-
-  background: url('../../assets/home-background.svg') no-repeat 80% top;
 }
 
 #page-home .content {
@@ -98,10 +96,31 @@
   }
 
   #page-home .content main h1 {
-    font-size: 42px;
+    font-size: 30px;
   }
 
   #page-home .content main p {
-    font-size: 24px;
+    font-size: 22px;
+  }
+
+  #page-home .content main a span {
+    width: 40px;
   }
 }
+
+@media screen and (min-width: 768px) {
+  #page-home {
+    background: url('../../assets/home-background.svg') no-repeat 80% -10%;
+  }
+
+  #page-home .content main a span {
+    width: 72px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #page-home {
+    background: url('../../assets/home-background.svg') no-repeat 80% 20%;
+  }
+}
+
