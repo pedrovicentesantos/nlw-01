@@ -118,10 +118,6 @@
   cursor: not-allowed;
 }
 
-/* #page-create-point form .field-group .field + .field {
-  margin-left: 24px;
-} */
-
 #page-create-point form .field-group input + input {
   margin-left: 24px;
 }
@@ -147,7 +143,6 @@
 }
 
 #page-create-point form button {
-  /* width: 260px; */
   width: 100%;
   height: 56px;
   background: var(--primary-color);

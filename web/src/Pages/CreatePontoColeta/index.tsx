@@ -6,6 +6,7 @@ import { LeafletMouseEvent } from 'leaflet';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import api from '../../services/api';
 import Dropzone from '../../components/Dropzone';
+import PhoneInput from '../../components/PhoneInput';
 import './styles.css';
 import logo from '../../assets/logo.svg';
 
@@ -182,12 +183,7 @@ const CreatePontoColeta = () => {
             </div>
             <div className="field">
               <label htmlFor="whatsapp">Whatsapp</label>
-              <input 
-                type="text" 
-                name="whatsapp" 
-                id="whatsapp"
-                onChange={handleFormDataChange}
-              />
+              <PhoneInput handleChange={handleFormDataChange} />
             </div>
           </div>
         </fieldset>
