@@ -1,9 +1,15 @@
 import { Request, Response } from 'express';
 import knex from '../database/connection';
+import path from 'path';
+import * as dotenv from 'dotenv';
+
+dotenv.config({
+  path: path.resolve(__dirname, '..', '..', '.env')
+});
 
 class PontosColetaController {
   private generateImageUrl(image: string) {
-    return `http://192.168.0.13:3333/uploads/${image}`;
+    return `http://${process.env.BASE_URL}/uploads/${image}`;
   }
 
   create = async (request: Request, response: Response) => {
@@ -68,7 +74,7 @@ class PontosColetaController {
         .select('items.title');
       const serializedPontoColeta =  {
         ...pontoColeta,
-        image_url: this.generateImageUrl(pontoColeta.image),
+        image_url: pontoColeta.image ? this.generateImageUrl(pontoColeta.image) : '',
       }
       return response.json({pontoColeta: serializedPontoColeta, items});
     } catch (error: any) {
@@ -85,7 +91,7 @@ class PontosColetaController {
         const serializedPontosColeta = pontosColeta.map(pontoColeta => {
           return {
             ...pontoColeta,
-            image_url: this.generateImageUrl(pontoColeta.image),
+            image_url:pontoColeta.image ? this.generateImageUrl(pontoColeta.image) : '',
           }
         });
         return response.json(serializedPontosColeta);

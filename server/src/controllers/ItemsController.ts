@@ -1,5 +1,11 @@
 import { Request, Response} from 'express';
 import knex from '../database/connection';
+import path from 'path';
+import * as dotenv from 'dotenv';
+
+dotenv.config({
+  path: path.resolve(__dirname, '..', '..', '.env')
+});
 
 class ItemsController {
   async index(request: Request, response: Response) {
@@ -9,7 +15,7 @@ class ItemsController {
         return {
           id: item.id,
           title: item.title,
-          image_url: `http://192.168.0.13:3333/uploads/${item.image}`
+          image_url: `http://${process.env.BASE_URL}/uploads/${item.image}`
         }
       });
       return response.json(serializedItems);

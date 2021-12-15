@@ -9,3 +9,4 @@ uploads/*
 !uploads/papeis-papelao.svg
 
 *.sqlite
+.env
