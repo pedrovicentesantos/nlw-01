@@ -31,14 +31,10 @@ interface RouteParams {
 
 const Points = () => {
   const navigation = useNavigation();
-
   const [items, setItems] = useState<Item[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
-
   const [points, setPoints] = useState<Point[]>([]);
-
   const [initialPosition, setInitialPosition] = useState<[number,number]>([0,0]);
-
   const route = useRoute();
 
   const {uf, city} = route.params as RouteParams;
@@ -87,16 +83,12 @@ const Points = () => {
   }
 
   function handleSelectedItems(id: number) {
-
     const alreadySelected = selectedItems.includes(id);
-
     if (!alreadySelected) {
       setSelectedItems([...selectedItems, id]);
     }
-
     else {
       const filteredItems = selectedItems.filter(item => item !== id)
-
       setSelectedItems(filteredItems);
     }
   }
@@ -136,7 +128,7 @@ const Points = () => {
                     <View style={styles.mapMarkerContainer}>
                       <Image 
                         style={styles.mapMarkerImage} 
-                        source={{uri: point.image_url}} 
+                        source={{uri: point.image_url || 'http://cdn.onlinewebfonts.com/svg/img_211247.png'}} 
                       />
                       <Text style={styles.mapMarkerTitle}>{point.name}</Text>
                     </View>
@@ -167,8 +159,8 @@ const Points = () => {
                 onPress={() => handleSelectedItems(item.id)}
                 activeOpacity={0.6}
               >
-                <SvgUri width={42} height={42} uri={item.image_url} ></SvgUri>
-                <Text style={styles.itemTitle} >{item.title}</Text>
+                <SvgUri width={42} height={42} uri={item.image_url} />
+                <Text style={styles.itemTitle}>{item.title}</Text>
             </TouchableOpacity>
             );
           })}

@@ -33,7 +33,6 @@ const Home = () => {
             <Text style={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
           </View>
         </View>
-        {/* <Image source={} /> */}
         
         <View style={styles.footer}>
           <TextInput

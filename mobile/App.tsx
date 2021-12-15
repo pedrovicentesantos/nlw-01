@@ -1,10 +1,9 @@
 import React from 'react';
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'react-native';
-
 import { Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
-import { Ubuntu_700Bold, useFonts } from '@expo-google-fonts/ubuntu';
-
+import { Ubuntu_700Bold } from '@expo-google-fonts/ubuntu';
+import { useFonts } from 'expo-font';
 import Routes from './src/routes';
 
 export default function App() {

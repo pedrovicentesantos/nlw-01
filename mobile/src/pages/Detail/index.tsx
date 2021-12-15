@@ -69,7 +69,7 @@ const Detail = () => {
         <TouchableOpacity onPress={handleNavigateBack}>
           <Icon name="arrow-left" color="#34CB79" size={20} ></Icon>
         </TouchableOpacity>
-        <Image style={styles.pointImage} source={{uri:pointDetail.pontoColeta.image_url}} />
+        <Image style={styles.pointImage} source={{uri:pointDetail.pontoColeta.image_url || 'http://cdn.onlinewebfonts.com/svg/img_211247.png'}} />
         <Text style={styles.pointName}>{pointDetail.pontoColeta.name}</Text>
         <Text style={styles.pointItems}>{pointDetail.items.map(item => item.title).join(', ')}</Text>
 
