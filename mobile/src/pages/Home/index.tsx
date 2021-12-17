@@ -15,9 +15,6 @@ interface IBGECityResponse {
 }
 
 const Home = () => {
-  // TODO:
-  // Fazer a seleção da cidade e estado igual o select do web
-  // usar react-native-select-picker
   const navigation = useNavigation();
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
@@ -61,6 +58,7 @@ const Home = () => {
       city
     });
   }
+
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
       <ImageBackground 
@@ -78,26 +76,7 @@ const Home = () => {
         
         <View>
           <Dropdown items={ufs} onChange={setUf} selected={uf} />
-          {/* <TextInput
-            style={styles.input}
-            placeholder="Digite a UF"
-            value={uf}
-            maxLength={2}
-            autoCapitalize="characters"
-            autoCorrect={false}
-            onChangeText={text => setUf(text)}
-          >
-          </TextInput> */}
           <Dropdown items={cities} onChange={setCity} selected={city} />
-          {/* <TextInput
-            style={styles.input}
-            placeholder="Digite a Cidade"
-            value={city}
-            autoCorrect={false}
-            onChangeText={text => setCity(text)}
-          >
-          </TextInput> */}
-
           <RectButton style={styles.button} onPress={handleNavigateToPoints}> 
             <View style={styles.buttonIcon}>
               <Text> 
@@ -107,10 +86,8 @@ const Home = () => {
             <Text style={styles.buttonText}>Entrar</Text>
           </RectButton>
         </View>
-
       </ImageBackground>
     </KeyboardAvoidingView>
-    
   );
 }
 

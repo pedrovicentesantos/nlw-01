@@ -42,7 +42,7 @@ const Points = () => {
   useEffect(() => {
     api.get('items').then(response => {
       setItems(response.data);
-    })
+    });
   }, []);
 
   useEffect(() => {

@@ -7,7 +7,6 @@ interface Props {
   onChange: (value: string) => void;
 }
 
-
 const Dropdown:React.FC<Props> = ({selected, items, onChange}) => {
   return (
     <Picker
