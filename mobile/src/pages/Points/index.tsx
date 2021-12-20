@@ -47,7 +47,7 @@ const Points = () => {
 
   useEffect(() => {
     async function loadLocation() {
-      const {status} = await location.requestPermissionsAsync();
+      const {status} = await location.requestForegroundPermissionsAsync();
 
       if (status !== 'granted') {
         Alert.alert('Oooops...', 'É necessário permissão para acessar a localização');
