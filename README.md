@@ -12,7 +12,7 @@ Feita baseada no conteúdo da Next Level Week #01.
   * Uso do Expo para facilitar a criação do app mobile
 - Banco de Dados SQLite para persistir os dados
 
-- Toda a aplicação foi desenvolvida utilizando Typescript
+- Toda a aplicação foi desenvolvida utilizando Typescript.
 
 ## Instalação
 
@@ -23,10 +23,20 @@ git clone https://github.com/pedrovicentesantos/nlw-01
 cd nlw-01
 ```
 
-O segundo passo é entrar em cada uma das subpastas `server`, `web` e `mobile` e usar o seguinte comando:
+Depois disso, deve-se entrar em cada uma das subpastas e instalar as dependências de cada um dos ambientes.
+
+Um passo anterior no caso do backend é executar os seguintes comandos para inicializar o banco de dados corretamente:
+
+```
+knex:migrate
+knex:seed
+```
+
+Após rodar esses comandos, basta entrar em cada uma das subpastas `server`, `web` e `mobile` e usar o seguinte comando:
 
 ```
 npm start
+npm run dev   // Para o server
 ```
 
 Feito isto, a aplicação estará rodando e pode ser utilizada no servidor local acessando:
