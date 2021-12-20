@@ -63,15 +63,20 @@ const Points = () => {
   }, []);
 
   useEffect(() => {
-    api.get('/pontosColeta',{
-      params: {
-        city: city,
-        uf: uf,
-        items: selectedItems
-      }
-    }).then(response => {
-      setPoints(response.data);
-    });
+    api
+      .get('/pontosColeta',{
+        params: {
+          city: city,
+          uf: uf,
+          items: selectedItems.join(', ') || undefined
+        }
+      })
+      .then(response => {
+        setPoints(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, [selectedItems]);
 
   function handleNavigateBack() {
@@ -86,9 +91,8 @@ const Points = () => {
     const alreadySelected = selectedItems.includes(id);
     if (!alreadySelected) {
       setSelectedItems([...selectedItems, id]);
-    }
-    else {
-      const filteredItems = selectedItems.filter(item => item !== id)
+    } else {
+      const filteredItems = selectedItems.filter(item => item !== id);
       setSelectedItems(filteredItems);
     }
   }
