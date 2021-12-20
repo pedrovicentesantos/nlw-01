@@ -47,7 +47,7 @@ class PontosColetaController {
             item_id: item,
             pontoColeta_id,
           }
-      });
+        });
       await trx('pontoColeta_items').insert(pontoColetaItems);
       await trx.commit();
       return response.json({
@@ -91,7 +91,7 @@ class PontosColetaController {
         const serializedPontosColeta = pontosColeta.map(pontoColeta => {
           return {
             ...pontoColeta,
-            image_url:pontoColeta.image ? this.generateImageUrl(pontoColeta.image) : '',
+            image_url: pontoColeta.image ? this.generateImageUrl(pontoColeta.image) : '',
           }
         });
         return response.json(serializedPontosColeta);
@@ -112,7 +112,7 @@ class PontosColetaController {
       const serializedPontosColeta = pontosColeta.map(pontoColeta => {
         return {
           ...pontoColeta,
-          image_url: this.generateImageUrl(pontoColeta.image),
+          image_url: pontoColeta.image ? this.generateImageUrl(pontoColeta.image) : '',
         }
       });
       return response.json(serializedPontosColeta);
